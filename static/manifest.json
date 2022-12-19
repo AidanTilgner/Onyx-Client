@@ -1,0 +1,17 @@
+{
+	"short_name": "Onyx",
+	"name": "Onyx Client",
+	"start_url": "/",
+	"icons": [
+		{
+			"src": "icons/big-logo.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"background_color": "#ffffff",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#ffffff",
+	"description": "The simplest way to interact with your Onyx instance."
+}

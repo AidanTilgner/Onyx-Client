@@ -1,4 +1,4 @@
-import type { error, RequestHandler } from "@sveltejs/kit";
+import type { RequestHandler } from "@sveltejs/kit";
 import { isAuthed } from "$lib/server/auth";
 
 export const GET: RequestHandler = async (request) => {
