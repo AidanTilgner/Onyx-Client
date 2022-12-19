@@ -52,15 +52,18 @@ export const logout = async (username: string) => {
 	}
 };
 
-export const refresh = async (token: string) => {
+export const refresh = async (username: string, refresh_token: string) => {
 	try {
-		const { data } = await onyxPeople.post("/users/refresh", { token });
-		const { token: newToken, error } = data;
+		const { data } = await onyxPeople.post("/users/refresh", {
+			refresh_token,
+			username
+		});
+		const { access_token: newToken, refresh_token: newRefresh, error } = data;
 		if (error) {
 			return { error };
 		}
 
-		return { token: newToken };
+		return { access_token: newToken, refresh_token: newRefresh };
 	} catch (error) {
 		console.error(error);
 		return { error };

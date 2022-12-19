@@ -1,5 +1,5 @@
 import type { RequestHandler } from "@sveltejs/kit";
-import { isAuthed, login } from "$lib/server/auth";
+import { isAuthed, login, logout, refresh } from "$lib/server/auth";
 
 export const GET: RequestHandler = async (request) => {
 	try {
@@ -72,5 +72,92 @@ export const POST: RequestHandler = async ({ request }) => {
 	} catch (err) {
 		console.error(err);
 		return new Response("Error Logging In", { status: 401, statusText: "Unauthorized" });
+	}
+};
+
+export const PUT: RequestHandler = async ({ request }) => {
+	// hits the refresh endpoint
+	try {
+		const { refresh_token, username } = await request.json();
+
+		if (!refresh_token) {
+			return new Response(
+				JSON.stringify({ error: "No Refresh Token", message: "No Refresh Token" }),
+				{ status: 401, statusText: "Unauthorized" }
+			);
+		}
+		const {
+			access_token,
+			refresh_token: new_refresh_token,
+			error
+		} = await refresh(username, refresh_token);
+		if (error) {
+			return new Response(
+				JSON.stringify({ error: "Error Refreshing Token", message: "Error Refreshing Token" }),
+				{ status: 401, statusText: "Unauthorized" }
+			);
+		}
+		return new Response(
+			JSON.stringify({
+				authed: true,
+				access_token,
+				refresh_token: new_refresh_token,
+				message: "Refreshed Token"
+			}),
+			{
+				status: 200,
+				statusText: "OK",
+				headers: { "Content-Type": "application/json" }
+			}
+		);
+	} catch (err) {
+		console.error(err);
+		return new Response(
+			JSON.stringify({
+				error: "Error Refreshing Token",
+				message: "Error Refreshing Token"
+			}),
+			{ status: 401, statusText: "Unauthorized" }
+		);
+	}
+};
+
+export const DELETE: RequestHandler = async ({ request }) => {
+	// hits the logout endpoint
+	try {
+		const { refresh_token } = await request.json();
+
+		if (!refresh_token) {
+			return new Response(
+				JSON.stringify({ error: "No Refresh Token", message: "No Refresh Token" }),
+				{ status: 401, statusText: "Unauthorized" }
+			);
+		}
+		const { error } = await logout(refresh_token);
+		if (error) {
+			return new Response(
+				JSON.stringify({ error: "Error Logging Out", message: "Error Logging Out" }),
+				{ status: 401, statusText: "Unauthorized" }
+			);
+		}
+		return new Response(
+			JSON.stringify({
+				authed: false,
+				access_token: null,
+				refresh_token: null,
+				message: "Logged Out"
+			}),
+			{
+				status: 200,
+				statusText: "OK",
+				headers: { "Content-Type": "application/json" }
+			}
+		);
+	} catch (err) {
+		console.error(err);
+		return new Response(
+			JSON.stringify({ error: "Error Logging Out", message: "Error Logging Out" }),
+			{ status: 401, statusText: "Unauthorized" }
+		);
 	}
 };
