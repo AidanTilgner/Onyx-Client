@@ -24,7 +24,6 @@ export const isAuthed = async (token: string) => {
 export const login = async (username: string, password: string) => {
 	try {
 		const { data } = await onyxPeople.post("/users/signin", { username, password });
-		console.log("Data", data);
 		const { access_token, refresh_token, error } = data;
 		if (error) {
 			return { error };
