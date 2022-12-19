@@ -1,4 +1,9 @@
-<svg width="74" height="74" viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+<script lang="ts">
+	export let width = 75,
+		height = 74;
+</script>
+
+<svg {width} {height} viewBox="0 0 112 112" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<g filter="url(#filter0_d_303_9)">
 		<rect x="11" y="11" width="82" height="82" rx="15" fill="white" />
 	</g>

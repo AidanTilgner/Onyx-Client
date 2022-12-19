@@ -2,7 +2,7 @@
 	export let data: { [key: string]: any } = {};
 	import { onMount } from "svelte";
 	import { loginUser, checkAuth } from "$lib/helpers/auth";
-	import OnyxLogo from "$lib/assets/onyx-logo.svelte";
+	import OnyxLogo from "$lib/assets/OnyxLogo.svelte";
 
 	const formState = {
 		username: "",
@@ -11,11 +11,14 @@
 
 	$: console.log("Data: ", data);
 
+	let isTablet = false;
+
 	onMount(async () => {
 		const auth = await checkAuth();
 		if (auth) {
 			window.location.href = "/";
 		}
+		isTablet = window.innerWidth >= 768;
 	});
 
 	const handleSubmit = async () => {
@@ -31,7 +34,7 @@
 	<div class="login-modal">
 		<div class="login-modal-content">
 			<div class="login-modal-header">
-				<OnyxLogo />
+				<OnyxLogo height={isTablet ? 110 : 74} width={isTablet ? 110 : 74} />
 				<h2>Onyx</h2>
 			</div>
 			<div class="login-modal-body">
@@ -99,6 +102,10 @@
 			text-align: center;
 			margin-top: 36px;
 
+			@include tablet {
+				margin-top: 48px;
+			}
+
 			h2 {
 				font-weight: 400;
 				margin: 0;
@@ -106,6 +113,10 @@
 				text-align: center;
 				padding: 24px 0;
 				color: #324373;
+
+				@include tablet {
+					font-size: 48px;
+				}
 			}
 		}
 
@@ -129,7 +140,7 @@
 		input {
 			width: 100%;
 			padding: 14px 24px;
-			border: 1px solid #eaeaea;
+			border: 1px solid #32437360;
 			font-size: 14px;
 			box-sizing: border-box;
 			transition: all 0.2s ease-in-out;
