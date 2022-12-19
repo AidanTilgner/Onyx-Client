@@ -1,16 +1,19 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { loginUser, checkAuth } from '$lib/helpers/auth';
+	export let data: { [key: string]: any } = {};
+	import { onMount } from "svelte";
+	import { loginUser, checkAuth } from "$lib/helpers/auth";
 
 	const formState = {
-		username: '',
-		password: ''
+		username: "",
+		password: ""
 	};
+
+	$: console.log("Data: ", data);
 
 	onMount(async () => {
 		const auth = await checkAuth();
 		if (auth) {
-			window.location.href = '/';
+			window.location.href = "/";
 		}
 	});
 
@@ -18,7 +21,7 @@
 		const { username, password } = formState;
 		const loggedIn = await loginUser(username, password);
 		if (loggedIn) {
-			window.location.href = '/';
+			window.location.href = "/";
 		}
 	};
 </script>
@@ -49,8 +52,8 @@
 </main>
 
 <style lang="scss">
-	@use '$lib/styles/mixins' as *;
-	@use '$lib/styles/variables' as *;
+	@use "$lib/styles/mixins" as *;
+	@use "$lib/styles/variables" as *;
 
 	main {
 		display: flex;
@@ -72,7 +75,7 @@
 			align-items: center;
 			border-bottom: 1px solid #eaeaea;
 			padding: 24px 14px;
-			font-family: 'Inter', sans-serif;
+			font-family: "Inter", sans-serif;
 			font-weight: 300;
 
 			h2 {
@@ -84,7 +87,7 @@
 
 		&-body {
 			padding: 24px 14px 36px 14px;
-			font-family: 'Inter', sans-serif;
+			font-family: "Inter", sans-serif;
 			font-weight: 300;
 		}
 	}
@@ -95,7 +98,7 @@
 		margin-bottom: 24px;
 
 		label {
-			font-family: 'Inter', sans-serif;
+			font-family: "Inter", sans-serif;
 			font-weight: 300;
 			font-size: 22px;
 			margin-bottom: 14px;
@@ -105,7 +108,7 @@
 			width: 100%;
 			padding: 14px 24px;
 			border: 1px solid #eaeaea;
-			font-family: 'Quicksand', sans-serif;
+			font-family: "Quicksand", sans-serif;
 			font-size: 14px;
 			box-sizing: border-box;
 
@@ -125,7 +128,7 @@
 		box-shadow: 0.2px 0.2px 15px 0 rgba($color: #000000, $alpha: 0.15);
 		cursor: pointer;
 		font-size: 14px;
-		font-family: 'Quicksand', sans-serif;
+		font-family: "Quicksand", sans-serif;
 
 		&:hover {
 			box-shadow: 0.2px 0.2px 15px 0 rgba($color: #000000, $alpha: 0.35);
