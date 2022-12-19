@@ -19,3 +19,7 @@ export const onyxPeople = axios.create({
 export const useOnyxPeople = () => {
 	return onyxPeople;
 };
+
+export const onyxInterpretation = axios.create({
+	baseURL: `${ONYX_CORE_INSTANCE_HOST}/interpretation/api`
+});

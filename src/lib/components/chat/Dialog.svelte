@@ -2,6 +2,7 @@
 	import Bubble from "./Bubble.svelte";
 	import { onDestroy, onMount } from "svelte";
 	import { ButtonTypeToAction } from "./attachments";
+	import { sendChat } from "$lib/helpers/chat";
 	let messages: {
 		type: "from" | "to";
 		message: string;
@@ -46,34 +47,12 @@
 
 	const submitMessage = async (message: string) => {
 		addMessage(message);
-		const session_id = sessionStorage.getItem("session_id");
-		const response = await fetch("/contact/chat.json", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify({
-				message,
-				session_id
-			})
-		})
-			.then((res) => {
-				return res.json();
-			})
-			.catch((err) => {
-				console.error(err);
-				return {
-					answer:
-						"Sorry, I seem to be having technical difficulties. This has been reported. Please try again later."
-				};
-			});
+		const session_id = sessionStorage.getItem("session_id") || "";
+		const response = await sendChat(message, session_id);
 
-		const responseToAdd =
-			response.answer ||
-			"Sorry, I seem to be having technical difficulties. This has been reported. Please try again later.";
+		const responseToAdd = response.response;
 
 		addResponse(responseToAdd);
-		buttons = response.attachments.buttons ? response.attachments.buttons : [];
 	};
 
 	const generateRandomSessionID = () => {
