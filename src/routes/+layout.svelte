@@ -3,10 +3,10 @@
 </script>
 
 <svelte:head />
-<main>
+<div>
 	<Chat />
 	<slot />
-</main>
+</div>
 
 <style lang="scss">
 	body {

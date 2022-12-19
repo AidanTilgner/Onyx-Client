@@ -10,5 +10,24 @@
 	});
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<main>
+	<p>
+		More coming soon to Onyx Client. See <a
+			href="https://github.com/Onyx-Systems/Onyx-Client/issues">issue list</a
+		> for more details.
+	</p>
+</main>
+
+<style lang="scss">
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+
+	p {
+		text-align: center;
+	}
+</style>
