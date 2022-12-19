@@ -1,5 +1,4 @@
 <script lang="ts">
-	export let data: { [key: string]: any } = {};
 	import { onMount } from "svelte";
 	import { loginUser, checkAuth } from "$lib/helpers/auth";
 	import OnyxLogo from "$lib/assets/OnyxLogo.svelte";
@@ -8,8 +7,6 @@
 		username: "",
 		password: ""
 	};
-
-	$: console.log("Data: ", data);
 
 	let isTablet = false;
 
@@ -121,7 +118,7 @@
 		}
 
 		&-body {
-			padding: 36px 14px 36px 14px;
+			padding: 36px 24px 36px 24px;
 			font-weight: 300;
 		}
 	}
