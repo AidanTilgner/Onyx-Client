@@ -1,9 +1,8 @@
-import { sveltekit } from '@sveltejs/kit/vite';
-import { SvelteKitPWA } from '@vite-pwa/sveltekit'
+import { sveltekit } from "@sveltejs/kit/vite";
 
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [sveltekit(), SvelteKitPWA()]
+	plugins: [sveltekit()]
 };
 
 export default config;

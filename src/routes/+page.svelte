@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { checkAuth } from "$lib/helpers/auth";
+	import { checkAuth, checkAuthAndRedirect } from "$lib/helpers/auth";
 	import { onMount } from "svelte";
 
 	onMount(async () => {
-		const auth = await checkAuth();
-		if (!auth) {
-			window.location.href = "/login";
-		}
+		checkAuthAndRedirect(false, "/login");
 	});
 </script>
 

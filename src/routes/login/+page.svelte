@@ -11,7 +11,7 @@
 	let isTablet = false;
 
 	onMount(() => {
-		checkAuthAndRedirect();
+		checkAuthAndRedirect(true, "/");
 		isTablet = window.innerWidth >= 768;
 	});
 

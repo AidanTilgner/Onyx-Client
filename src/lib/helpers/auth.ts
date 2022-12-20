@@ -1,5 +1,8 @@
 export const checkAuth = async () => {
 	const accessToken = localStorage.getItem("access_token");
+	if (!accessToken) {
+		return false;
+	}
 	const body = await fetch(`/api/login?token=${accessToken}`);
 	const { status } = body;
 	if (status === 200 || (status >= 200 && status < 300)) {
@@ -16,10 +19,13 @@ export const checkAuth = async () => {
 	return false;
 };
 
-export const checkAuthAndRedirect = async () => {
+export const checkAuthAndRedirect = async (ifIs: boolean, to: string) => {
 	const auth = await checkAuth();
-	if (!auth) {
-		window.location.href = "/login";
+	if (!auth && ifIs) {
+		window.location.href = to;
+	}
+	if (auth && !ifIs) {
+		window.location.href = to;
 	}
 };
 
