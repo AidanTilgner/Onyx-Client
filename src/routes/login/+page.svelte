@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-	import { loginUser, checkAuthAndRedirect } from "$lib/helpers/auth";
+	import { loginUser } from "$lib/helpers/auth";
 	import OnyxLogo from "$lib/assets/OnyxLogo.svelte";
 
 	const formState = {
@@ -11,7 +11,6 @@
 	let isTablet = false;
 
 	onMount(() => {
-		checkAuthAndRedirect(true, "/");
 		isTablet = window.innerWidth >= 768;
 	});
 

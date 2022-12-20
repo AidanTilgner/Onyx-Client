@@ -55,12 +55,6 @@
 		z-index: 1015;
 		border: none;
 
-		@include desktop {
-			top: 200px;
-			right: 56px;
-			display: none;
-		}
-
 		&:hover {
 			transform: scale(1.1);
 		}

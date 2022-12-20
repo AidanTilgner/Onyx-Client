@@ -3,7 +3,7 @@
 	import { onMount } from "svelte";
 
 	onMount(async () => {
-		checkAuthAndRedirect(false, "/login");
+		checkAuthAndRedirect("/login");
 	});
 </script>
 

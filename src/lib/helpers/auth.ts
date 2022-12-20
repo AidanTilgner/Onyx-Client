@@ -19,12 +19,9 @@ export const checkAuth = async () => {
 	return false;
 };
 
-export const checkAuthAndRedirect = async (ifIs: boolean, to: string) => {
+export const checkAuthAndRedirect = async (to: string) => {
 	const auth = await checkAuth();
-	if (!auth && ifIs) {
-		window.location.href = to;
-	}
-	if (auth && !ifIs) {
+	if (!auth) {
 		window.location.href = to;
 	}
 };
