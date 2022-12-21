@@ -59,7 +59,7 @@
 				type="text"
 				name="first_name"
 				id="first_name"
-				placeholder="Email..."
+				placeholder="First name..."
 				bind:value={profile.first_name}
 			/>
 		</div>
@@ -69,7 +69,7 @@
 				type="text"
 				name="last_name"
 				id="last_name"
-				placeholder="Email..."
+				placeholder="Last name..."
 				bind:value={profile.last_name}
 			/>
 		</div>
