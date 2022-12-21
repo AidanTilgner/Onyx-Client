@@ -1,0 +1,23 @@
+body {
+	font-family: "Quicksand", sans-serif;
+}
+
+* {
+	font-family: "Quicksand", sans-serif;
+}
+
+hr {
+	border: 0.5px solid rgba($color: #2256f2, $alpha: 0.15);
+}
+
+.title {
+	font-size: 36px;
+	font-weight: 400;
+	margin-bottom: 24px;
+	border: 1px solid red;
+}
+
+.form-group {
+	margin-bottom: 24px;
+	border: 1px solid red;
+}

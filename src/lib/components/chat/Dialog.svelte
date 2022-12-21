@@ -198,7 +198,7 @@
 		top: 0;
 		right: 0;
 		left: 0;
-		bottom: 30%;
+		bottom: 25%;
 		padding: 24px;
 		overflow-y: scroll;
 		box-sizing: border-box;
@@ -213,7 +213,7 @@
 			flex-wrap: wrap;
 			gap: 8px;
 			position: fixed;
-			bottom: 30%;
+			bottom: 25%;
 			left: 0;
 			right: 0;
 			padding: 8px 24px;
@@ -249,7 +249,7 @@
 
 	.input {
 		position: absolute;
-		top: 70%;
+		top: 75%;
 		right: 0;
 		left: 0;
 		bottom: 0;
