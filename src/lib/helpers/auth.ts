@@ -24,6 +24,7 @@ export const checkAuthAndRedirect = async (to: string) => {
 	if (!auth) {
 		window.location.href = to;
 	}
+	return auth;
 };
 
 export const loginUser = async (username: string, password: string) => {

@@ -15,7 +15,6 @@
 			body: JSON.stringify(profile)
 		});
 		const data = await response.json();
-		console.log(data);
 	};
 
 	onMount(async () => {
@@ -24,8 +23,6 @@
 		const data = await response.json();
 		profile = data.data;
 	});
-
-	$: console.log(profile);
 </script>
 
 <main>

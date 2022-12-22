@@ -2,9 +2,6 @@
 	import { checkAuth, checkAuthAndRedirect } from "$lib/helpers/auth";
 	import { onMount } from "svelte";
 
-	onMount(async () => {
-		checkAuthAndRedirect("/login");
-	});
 </script>
 
 <main>

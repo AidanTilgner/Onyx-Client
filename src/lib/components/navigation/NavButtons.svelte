@@ -9,9 +9,21 @@
 	$: includesRoute = (route: string) => {
 		return currentRoute.includes(route);
 	};
+
+	$: isRoute = (route: string) => {
+		return currentRoute === route;
+	};
 </script>
 
 <div class="nav-buttons">
+	<button
+		class="nav-button {isRoute('/') && 'active'}"
+		on:click={() => {
+			window.location.href = "/";
+		}}
+	>
+		<i class="ph-house-light icon" />
+	</button>
 	<button
 		class="nav-button {includesRoute('settings') && 'active'}"
 		on:click={() => {
