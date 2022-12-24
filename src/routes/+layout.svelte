@@ -1,10 +1,11 @@
 <script>
 	import Chat from "$lib/components/chat/Chat.svelte";
 	import NavButtons from "$lib/components/navigation/NavButtons.svelte";
+	import Nav from "$lib/components/navigation/Nav.svelte";
 	import { checkAuthAndRedirect } from "$lib/helpers/auth";
 	import { onMount } from "svelte";
 
-	let loggedIn = false;
+	let loggedIn = true;
 	onMount(async () => {
 		if (!window.location.href.includes("login")) {
 			loggedIn = await checkAuthAndRedirect("/login");
@@ -16,11 +17,10 @@
 <div>
 	{#if loggedIn}
 		<Chat />
-		<NavButtons />
+		<Nav />
 	{/if}
 	<slot />
 </div>
 
 <style lang="scss">
-	@import "$lib/styles/global.scss";
 </style>
