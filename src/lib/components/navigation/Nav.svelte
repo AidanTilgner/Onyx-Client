@@ -90,7 +90,7 @@
 			</div>
 			<div class="links">
 				<a href="/">Home</a>
-				<a href="/skills">Settings</a>
+				<a href="/settings">Settings</a>
 			</div>
 			<div class="buttons" />
 		</div>
